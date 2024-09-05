@@ -1,0 +1,8 @@
+version: '3'
+services:
+  web:
+    build: . # . means the file is in the current directory
+    ports:
+      - "5000:5000" # like the one on the dockerfile
+    volumes:
+      - .:/app # copy and keep in sync the docker folder set in the dockerfile and local folder
