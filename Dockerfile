@@ -1,6 +1,4 @@
 FROM python:3.10
-# the port choosen
-EXPOSE 5000
 # path of the app to use for the image
 WORKDIR /app
 # copy the file selected in the workdir specified
@@ -9,4 +7,4 @@ RUN pip install --no-cache-dir --upgrade -r requirements.txt
 # copy everything from the current directory into workdir specified
 COPY . .
 # the command to do when created the app
-CMD ["flask", "run", "--host", "0.0.0.0"]
+CMD ["gunicorn", "--bind", "0.0.0.0:80", "app:create_app()"]
